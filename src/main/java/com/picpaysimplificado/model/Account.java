@@ -11,16 +11,17 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Account {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String fullName;
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private  User idUser;
+
     private String cpfCnpj;
-    private String email;
-    private String password;
-
-    @Enumerated(EnumType.STRING)
-    private  TipoUsuario tipoUsuario;
-
+    private int bankCode;
+    private float value;
 }
